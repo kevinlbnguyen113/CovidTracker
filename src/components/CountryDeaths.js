@@ -17,7 +17,7 @@ export class CountryDeaths extends Component {
                  <h2 style={{marginBottom:'10px', marginLeft:'0px'}}>Countries by Deaths</h2>      
                         <div style= {{height:'250px', overflow:'auto', marginRight: '25px',width: '260px'}}>
                             {this.state.sortedDeaths.map((data) => (
-                                <div style={country }>
+                                <div style={country}  >
                                 <h4 >{data.country}</h4>
                                 <h4 style={{marginLeft:'15px'}}>{parseInt(data.deaths).toLocaleString()}</h4>
                                 </div>

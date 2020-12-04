@@ -4,6 +4,7 @@ import { findByLabelText } from '@testing-library/react';
 import Countries from './Countries'
 import CountryDeaths from './CountryDeaths'
 import Graph from './Graph'
+import CountUp from 'react-countup'
 
 export class Overview extends Component {
 
@@ -20,9 +21,8 @@ export class Overview extends Component {
       }
 
 
-    sortData = data => {
-        this.setState({sorted: this.state.usData.sort})
-    }  
+   
+
     render() {
         return (
             <div >
@@ -30,15 +30,17 @@ export class Overview extends Component {
                 <div style={{display: 'flex',justifyContent:'center'}}>
                     <div style={div1}>
                         <h2>Active Cases</h2>
-                        <h2>{parseInt(this.state.data.cases).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={(parseInt(this.state.data.cases)) || 0} separator=","  /></h2>
+                        
+                        
                     </div>
                     <div style={div1}>
                         <h2>Total Deaths</h2>
-                        <h2>{parseInt(this.state.data.deaths).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={parseInt(this.state.data.deaths) || 0} separator="," /></h2>
                     </div>
                     <div style={div1}>
                         <h2>Total Recovered</h2>
-                        <h2>{parseInt(this.state.data.recovered).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={parseInt(this.state.data.recovered) || 0} separator="," /></h2>
                     </div>
                     
                 </div>
@@ -47,15 +49,15 @@ export class Overview extends Component {
                 <div style={{display: 'flex',justifyContent:'center'}}>
                     <div style={div1}>
                         <h2>Active Cases</h2>
-                        <h2>{parseInt(this.state.usData.active).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={parseInt(this.state.usData.active) || 0} separator=","/></h2>
                     </div>
                     <div style={div1}>
                         <h2>Total Deaths</h2>
-                        <h2>{parseInt(this.state.usData.deaths).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={parseInt(this.state.usData.deaths) || 0} separator="," /></h2>
                     </div>
                     <div style={div1}>
                         <h2>Total Recovered</h2>
-                        <h2>{parseInt(this.state.usData.recovered).toLocaleString()}</h2>
+                        <h2><CountUp start={0} end={parseInt(this.state.usData.recovered) || 0} separator="," /></h2>
                     </div>
                     
                 </div>
