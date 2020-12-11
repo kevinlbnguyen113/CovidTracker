@@ -3,6 +3,8 @@ import axios from 'axios';
 import { findByLabelText } from '@testing-library/react';
 import Countries from './Countries'
 import CountryDeaths from './CountryDeaths'
+import RecoveredCountries from './RecoveredCountries'
+import ActiveCountries from './ActiveCountries'
 import Graph from './Graph'
 import CountUp from 'react-countup'
 
@@ -67,6 +69,11 @@ export class Overview extends Component {
                 <Countries />
                 <Graph />
                 <CountryDeaths />
+                </div>
+
+                <div style = {{display: 'flex', justifyContent: 'space-between'}}>
+                <RecoveredCountries /> 
+                <ActiveCountries />
                 </div>
 
             </div>
