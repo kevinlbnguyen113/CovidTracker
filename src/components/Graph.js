@@ -33,7 +33,9 @@ export class Graph extends Component {
 
         if(this.props.history.length !== 0){
             return (
+                <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px", width: "100%", margin: "0px 20px"}}>
                 <div style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", width: "100%"}}>
+
                     <select name="countrySelect" id="countrySelect" onChange={(e) => this.props.handleCountryChange(e.target.value)}>
                     <option key="World">Worldwide</option>
                         {this.props.countries.map((data) => (
@@ -42,16 +44,17 @@ export class Graph extends Component {
                     </select>
                     <div style ={{width: "85%"}}>
                         <Line 
-                            data={{
+                            data= {{
                             labels: this.state.keys,
                             datasets: [{
                                 data: this.state.values,
                                 label: "Infected",
                                 fill: false,
-                                borderColor: "#F00"
+                                borderColor: "#F00",
                             }] 
                         }}/>
                     </div>
+                </div>
                 </div>
             )
         } else {

@@ -5,9 +5,10 @@ export class Countries extends Component {
     
     render() {
         return (
-            <div>
-                <h2 style={{marginBottom:'10px', marginLeft:'25px'}}>Countries by Cases</h2>
-                        <div style= {{height:'250px', overflow:'auto', marginLeft: '25px',width: '260px'}} >
+            <div >
+            <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px"}}>
+                <h2 style={{marginBottom:'10px', textAlign: "center"}}>Countries by Cases</h2>
+                        <div style= {{height:'250px', overflow:'auto',width: '260px' }} >
                             
                              {this.props.sorted.map((data) => (
                                 
@@ -17,6 +18,7 @@ export class Countries extends Component {
                                 </div>
                             )) }
                         </div>
+                </div>
             </div>
         )        
     }
@@ -24,6 +26,7 @@ export class Countries extends Component {
 
 const country = {
     display: 'flex',
+    
 }
 
 export default Countries

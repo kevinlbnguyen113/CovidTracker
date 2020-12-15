@@ -14,8 +14,9 @@ export class CountryDeaths extends Component {
     render() {
         return (
             <div>
-                 <h2 style={{marginBottom:'10px', marginLeft:'0px'}}>Countries by Deaths</h2>      
-                        <div style= {{height:'250px', overflow:'auto', marginRight: '25px',width: '260px'}}>
+             <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px"}}>
+                 <h2 style={{marginBottom:'10px', textAlign: "center"}}>Countries by Deaths</h2>      
+                        <div style= {{height:'250px', overflow:'auto', width: '260px'}}>
                             {this.state.sortedDeaths.map((data) => (
                                 <div style={country}  >
                                 <h4 >{data.country}</h4>
@@ -23,6 +24,7 @@ export class CountryDeaths extends Component {
                                 </div>
                             ))}
                         </div>
+                </div>
             </div>
         )
     }

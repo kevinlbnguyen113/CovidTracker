@@ -14,14 +14,16 @@ export class ActiveCountries extends Component {
     render() {
         return (
             <div>
-                <h2 style={{marginBottom:'10px', marginLeft:'25px'}}>Active Cases by Countries</h2>
-                        <div style= {{height:'250px', overflow:'auto', marginLeft: '25px',width: '260px'}}>
+            <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px"}}>
+                <h2 style={{marginBottom:'10px', textAlign: "center", wordWrap: "normal", width:"260px"}}>Active Cases by Countries</h2>
+                        <div style= {{height:'250px', overflow:'auto', width: '260px'}}>
                             {this.state.sorted.map((data) => (
                                 <div style={country }>
                                 <h4 >{data.country}</h4>
                                 <h4 style={{marginLeft:'15px'}}>{parseInt(data.active).toLocaleString()}</h4>
                                 </div>
                             ))}
+                        </div>
                         </div>
             </div>
         )
