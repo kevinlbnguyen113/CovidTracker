@@ -12,22 +12,34 @@ export class Overview extends Component {
 
     state = {
         data: [],
-        usData: []
+        usData: [],
+        sorted: [],
+        countries: [],
+        history: [],
+        country: ''
     }
 
     componentDidMount(){
         axios.get('https://disease.sh/v3/covid-19/all')
-                .then(res => this.setState({ data: res.data}))
+            .then(res => this.setState({ data: res.data}))
         axios.get('https://disease.sh/v3/covid-19/countries/United%20States?strict=true')
             .then(res => this.setState({usData: res.data }))
+        axios.get('https://disease.sh/v3/covid-19/countries?sort=cases')
+            .then(res => this.setState({sorted: res.data }))
+        axios.get('https://disease.sh/v3/covid-19/countries')
+            .then(res => this.setState({countries: res.data }))
+        axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
+            .then(res => this.setState({history: res.data }))
       }
 
 
-   
+      handleCountryChange = async (country) =>{
+        console.log(country)
+      }
 
     render() {
         return (
-            <div >
+            <div style={{margin: "0px 25px"}}>
             <h1 style={{textAlign:'center',marginTop:'20px'}}>Worldwide Statistics</h1>
                 <div style={{display: 'flex',justifyContent:'center'}}>
                     <div style={div1}>
@@ -66,14 +78,14 @@ export class Overview extends Component {
                 
                
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-                <Countries />
-                <Graph />
+                <Countries sorted={this.state.sorted}/>
+                <Graph countries={this.state.countries} history={this.state.history} handleCountryChange={this.handleCountryChange}/>
                 <CountryDeaths />
                 </div>
 
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-                <RecoveredCountries /> 
-                <ActiveCountries />
+               <RecoveredCountries />  
+               <ActiveCountries /> 
                 </div>
 
             </div>
