@@ -9,6 +9,8 @@ import Graph from './Graph'
 import CountUp from 'react-countup'
 import DailyChart from './DailyChart'
 
+
+
 export class Overview extends Component {
 
     state = {
@@ -31,16 +33,33 @@ export class Overview extends Component {
             .then(res => this.setState({countries: res.data }))
         axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
             .then(res => this.setState({history: res.data }))
+            
+                
+     
       }
 
+    
+      getCountryHistory = (country) => {
+            axios.get(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=all`)
+            .then(res => this.setState({history: res.data.timeline }))  
 
-      handleCountryChange = async (country) =>{
+        }
+    
+    
+      handleCountryChange = (country) =>{
         console.log(country)
+        //this.getCountryHistory(country)
+        
+        this.setState({country: country})
+        
+       
+        
+        
       }
 
     render() {
         return (
-            <div style={{margin: "0px 25px"}}>
+            <div style={{margin: "0px 25px", marginBottom: "15px"}}>
             <h1 style={{textAlign:'center',marginTop:'20px'}}>Worldwide Statistics</h1>
                 <div style={{display: 'flex',justifyContent:'center'}}>
                     <div style={div1}>
@@ -78,10 +97,14 @@ export class Overview extends Component {
                 </div>
                 
                
-                <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-                <Countries sorted={this.state.sorted}/>
-                <Graph countries={this.state.countries} history={this.state.history} handleCountryChange={this.handleCountryChange}/>
-                <CountryDeaths />
+                <div key="div2" style = {{display: 'flex', justifyContent: 'space-between'}}>
+                <Countries sorted={this.state.sorted} handleCountryChange={this.handleCountryChange}/>
+
+                <Graph countries={this.state.countries} handleCountryChange={this.handleCountryChange} 
+                myCountry={this.state.country} 
+                getCountryData={this.getCountryHistory} />
+
+                <CountryDeaths handleCountryChange={this.handleCountryChange} />
                 </div>
 
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>

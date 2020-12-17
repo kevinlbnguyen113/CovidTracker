@@ -12,7 +12,7 @@ export class Countries extends Component {
                             
                              {this.props.sorted.map((data) => (
                                 
-                                <div style={country} >
+                                <div style={country} onClick={(e) => this.props.handleCountryChange(data.country)} >
                                 <h4 >{data.country}</h4>
                                 <h4 style={{marginLeft:'15px'}}>{parseInt(data.cases).toLocaleString()}</h4>
                                 </div>

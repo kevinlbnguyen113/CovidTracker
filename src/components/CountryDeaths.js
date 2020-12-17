@@ -18,7 +18,7 @@ export class CountryDeaths extends Component {
                  <h2 style={{marginBottom:'10px', textAlign: "center"}}>Countries by Deaths</h2>      
                         <div style= {{height:'250px', overflow:'auto', width: '260px'}}>
                             {this.state.sortedDeaths.map((data) => (
-                                <div style={country}  >
+                                <div style={country} onClick={(e) => this.props.handleCountryChange(data.country)} >
                                 <h4 >{data.country}</h4>
                                 <h4 style={{marginLeft:'15px'}}>{parseInt(data.deaths).toLocaleString()}</h4>
                                 </div>
