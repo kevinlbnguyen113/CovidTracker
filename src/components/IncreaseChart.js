@@ -36,7 +36,8 @@ class IncreaseChart extends React.Component {
     render(){  
         const continents = this.state.continentDiff;
        return(  
-        <div style ={{width: "85%"}}>
+        <div style ={{width: "70%", margin: "50px auto", textAlign: "center"}}>
+            <h1>Daily Changes</h1>
         <Bar 
             data= {{
             labels: continents.map(({continent})=> continent),

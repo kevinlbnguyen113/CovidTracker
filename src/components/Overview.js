@@ -112,7 +112,9 @@ export class Overview extends Component {
                <RecoveredCountries />
                 <DailyChart />
                <ActiveCountries /> 
-               <IncreaseChart/>
+                </div>
+                <div>
+                <IncreaseChart/>
                 </div>
             <div>
             <test/>
